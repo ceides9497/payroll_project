@@ -3,7 +3,7 @@ package payrollcasestudy.transactions.change;
 import org.junit.Rule;
 import org.junit.Test;
 import payrollcasestudy.DatabaseResource;
-import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.MemoryRepository;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
 import payrollcasestudy.transactions.Transaction;
@@ -18,7 +18,7 @@ public class ChangeNoMemberTransactionTest {
 
     @Test
     public void testChangeMemberTransaction() throws Exception {
-        PayrollDatabase database = databaseResource.getInstance();
+        MemoryRepository database = databaseResource.getInstance();
 
         int employeeId = 2;
         int memberId = 7734;

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import payrollcasestudy.entities.Employee;
-import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.MemoryRepository;
 import payrollcasestudy.transactions.Transaction;
 import payrollcasestudy.transactions.add.AddCommissionedEmployeeTransaction;
 import payrollcasestudy.transactions.add.AddHourlyEmployeeTransaction;
@@ -58,11 +58,11 @@ public class EmployeePresenter {
 
 
 	public static List<Employee> Devolver_empleados() {		
-		return PayrollDatabase.globalPayrollDatabase.getAllEmployees();
+		return MemoryRepository.globalPayrollDatabase.getAllEmployees();
 	}
 
 	public static Employee getEmployee(int employe_ci) {
-		return PayrollDatabase.globalPayrollDatabase.getEmployee(employe_ci);
+		return MemoryRepository.globalPayrollDatabase.getEmployee(employe_ci);
 	}
 
 

@@ -1,7 +1,7 @@
 package payrollcasestudy.transactions.change;
 
 import payrollcasestudy.DatabaseResource;
-import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.MemoryRepository;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
 import payrollcasestudy.transactions.Transaction;
@@ -10,7 +10,7 @@ public class ChangeMemberTransaction implements Transaction {
 	private int employeeId;
 	private int memberId;
 	private double dues;
-	PayrollDatabase database = PayrollDatabase.globalPayrollDatabase;
+	MemoryRepository database = MemoryRepository.globalPayrollDatabase;
 	
 	public ChangeMemberTransaction(int employeeId, int memberId, double dues) {
 		this.employeeId=employeeId;
@@ -22,7 +22,7 @@ public class ChangeMemberTransaction implements Transaction {
 		Employee employee = database.getEmployee(employeeId);
 		UnionAffiliation unionAffiliation = new UnionAffiliation(memberId,dues);
 	    employee.setUnionAffiliation(unionAffiliation);	
-	    PayrollDatabase.globalPayrollDatabase.addUnionMember(memberId, employee);
+	    MemoryRepository.globalPayrollDatabase.addUnionMember(memberId, employee);
 	}
 
 }

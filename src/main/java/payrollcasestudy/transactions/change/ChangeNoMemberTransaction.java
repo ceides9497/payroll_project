@@ -1,12 +1,12 @@
 package payrollcasestudy.transactions.change;
 
-import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.MemoryRepository;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
 import payrollcasestudy.transactions.Transaction;
 
 public class ChangeNoMemberTransaction extends ChangeEmployeeTransaction {
-	PayrollDatabase database = PayrollDatabase.globalPayrollDatabase;
+	MemoryRepository database = MemoryRepository.globalPayrollDatabase;
 	private int employeeId;
 	private Employee employee;
 

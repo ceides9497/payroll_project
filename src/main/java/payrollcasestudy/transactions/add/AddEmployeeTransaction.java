@@ -1,6 +1,6 @@
 package payrollcasestudy.transactions.add;
 
-import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.MemoryRepository;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.paymentclassifications.PaymentClassification;
 import payrollcasestudy.entities.paymentmethods.HoldMethod;
@@ -31,7 +31,7 @@ public abstract class AddEmployeeTransaction implements Transaction {
         employee.setPaymentClassification(paymentClassification);
         employee.setPaymentSchedule(paymentSchedule);
         employee.setPaymentMethod(paymentMethod);
-        PayrollDatabase.globalPayrollDatabase.addEmployee(employeeId, employee);
+        MemoryRepository.globalPayrollDatabase.addEmployee(employeeId, employee);
     }
 
     protected abstract PaymentSchedule getPaymentSchedule();
