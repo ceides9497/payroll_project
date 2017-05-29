@@ -28,7 +28,7 @@ public class Main {
 		get("/Employees", (request, response) -> {
 			view.put("employees", EmployeePresenter.Devolver_empleados());
 		      return new ModelAndView(view, "templates/employee/indexEmployee.vtl");
-		    }, new VelocityTemplateEngine());		
+		    }, new VelocityTemplateEngine());	
 		post("/newEmployee", (request, response) -> {		
 			 EmployeePresenter.registrar_empleado(request.queryParams("kind"),request.queryParams("nombre"),request.queryParams("direccion"),request.queryParams("ci"), request.queryParams("salario"),request.queryParams("comision"));
 			 response.redirect("/Employees");
