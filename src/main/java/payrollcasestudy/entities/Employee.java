@@ -1,6 +1,6 @@
 package payrollcasestudy.entities;
 
-import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.MemoryRepository;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
 import payrollcasestudy.entities.paymentclassifications.CommissionedPaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
@@ -102,11 +102,11 @@ public class Employee {
 	}
 
 	public void safeEmployeeInDB(int id, Employee employee){
-		PayrollDatabase.globalPayrollDatabase.addEmployee(id, employee);
+		MemoryRepository.globalPayrollDatabase.addEmployee(id, employee);
 	}
 	
 	public static Employee getEmployeeFromDB(int employeeId){
-		return PayrollDatabase.globalPayrollDatabase.getEmployee(employeeId);
+		return MemoryRepository.globalPayrollDatabase.getEmployee(employeeId);
 	}
 	
 	public String getClasificationPayment()

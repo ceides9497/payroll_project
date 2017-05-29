@@ -8,8 +8,8 @@ import java.util.*;
  * Listing 19-3
  * Listing 19-4
  */
-public class PayrollDatabase {
-    public static PayrollDatabase globalPayrollDatabase = new PayrollDatabase();
+public class MemoryRepository implements Repository{
+    public static MemoryRepository globalPayrollDatabase = new MemoryRepository();
 
     private Map<Integer, Employee> employees = new HashMap<Integer, Employee>();
     public Map<Integer, Employee> unionMembers = new HashMap<Integer, Employee>();

@@ -1,6 +1,6 @@
 package payrollcasestudy.transactions.add;
 
-import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.MemoryRepository;
 import payrollcasestudy.entities.Employee;
 import payrollcasestudy.entities.TimeCard;
 import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
@@ -22,7 +22,7 @@ public class AddTimeCardTransaction implements Transaction {
     }
 
     public void execute() {
-        Employee employee = PayrollDatabase.globalPayrollDatabase.getEmployee(employeeId);
+        Employee employee = MemoryRepository.globalPayrollDatabase.getEmployee(employeeId);
         if (employee != null){
             PaymentClassification paymentClassification = employee.getPaymentClassification();
             if (paymentClassification instanceof HourlyPaymentClassification){

@@ -1,20 +1,20 @@
 package payrollcasestudy;
 
 import org.junit.rules.ExternalResource;
-import payrollcasestudy.boundaries.PayrollDatabase;
+import payrollcasestudy.boundaries.MemoryRepository;
 
 public class DatabaseResource extends ExternalResource {
-    protected PayrollDatabase instance;
+    protected MemoryRepository instance;
 
     public void before(){
-        instance = PayrollDatabase.globalPayrollDatabase;
+        instance = MemoryRepository.globalPayrollDatabase;
     }
 
     public void after(){
         instance.clear();
     }
 
-    public PayrollDatabase getInstance() {
+    public MemoryRepository getInstance() {
         return instance;
     }
 }
