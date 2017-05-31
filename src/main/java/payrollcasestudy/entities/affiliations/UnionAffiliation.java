@@ -64,5 +64,9 @@ public class UnionAffiliation implements Affiliation{
 		}
 		return fridays;
 	}
+	public Affiliation setAffiliation() {
+		// TODO Auto-generated method stub
+		return new UnionAffiliation(0, 0);
+	}
 	
 }

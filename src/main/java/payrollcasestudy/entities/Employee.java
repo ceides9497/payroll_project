@@ -1,6 +1,7 @@
 package payrollcasestudy.entities;
 
 import payrollcasestudy.boundaries.MemoryRepository;
+import payrollcasestudy.entities.affiliations.Affiliation;
 import payrollcasestudy.entities.affiliations.UnionAffiliation;
 import payrollcasestudy.entities.paymentclassifications.CommissionedPaymentClassification;
 import payrollcasestudy.entities.paymentclassifications.HourlyPaymentClassification;
@@ -21,7 +22,7 @@ public class Employee {
     private int employeeId;
     private String name;
     private String address;
-    private UnionAffiliation unionAffiliation;
+    private Affiliation affiliations[];
 
     public Employee (){
     	
@@ -30,7 +31,7 @@ public class Employee {
         this.employeeId = employeeId;
         this.name = name;
         this.address = address;
-        unionAffiliation = UnionAffiliation.NO_AFFILIATION;
+        affiliations = null;
     }
     public int getEmployeeId(){
     	return employeeId;
@@ -85,7 +86,10 @@ public class Employee {
 
     public void payDay(PayCheck payCheck) {
         double grossPay = paymentClassification.calculatePay(payCheck);
-    	double deduction  = unionAffiliation.calculateDeduction(payCheck);
+    	double deduction  = 0;
+    	for(Affiliation affiliation: affiliations){
+    		deduction = deduction + affiliation.calculateDeduction(payCheck);
+    	}    			
         double netPay = grossPay - (deduction);
         payCheck.setGrossPay(grossPay);
         payCheck.setNetPay(netPay);
@@ -93,12 +97,10 @@ public class Employee {
         paymentMethod.pay(payCheck);
     }
 
-	public void setUnionAffiliation(UnionAffiliation unionAffiliation) {
-		this.unionAffiliation = unionAffiliation;
-	}
-
-	public UnionAffiliation getUnionAffiliation() {
-		return unionAffiliation;
+	public void seAllAffiliations(UnionAffiliation unionAffiliation) {
+		for (Affiliation affiliation: affiliations) {
+				affiliation.setAffiliation();
+	      }
 	}
 
 	public void safeEmployeeInDB(int id, Employee employee){

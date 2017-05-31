@@ -25,6 +25,9 @@ public class SocialAffilation implements Affiliation {
 		// TODO Auto-generated method stub
 		return payCheck.getGrossPay() *0.12;
 	}
+	public Affiliation setAffiliation() {
+		return new SocialAffilation(0);	
+	}
 	
 
 }
