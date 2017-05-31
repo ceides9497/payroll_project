@@ -10,7 +10,7 @@ import payrollcasestudy.entities.PayCheck;
 import payrollcasestudy.entities.ServiceCharge;
 import static payrollcasestudy.entities.paymentclassifications.PaymentClassification.isInPayPeriod;
 
-public class UnionAffiliation {
+public class UnionAffiliation implements Affiliation{
 	public  final static  UnionAffiliation NO_AFFILIATION = new UnionAffiliation(0, 0);
 	Map<Calendar, ServiceCharge> serviceCharges = new HashMap<Calendar, ServiceCharge>();
 	private int memberId;
@@ -31,12 +31,12 @@ public class UnionAffiliation {
 	public int getMemberId() {
 		return memberId;
 	}
-	
 	public void addServiceCharge(Calendar date, double amount) {
 		// TODO Auto-generated method stub
 		this.serviceCharges.put(date, new ServiceCharge(date, amount));
 
 	}
+	
 	public double calculateDeduction(PayCheck payCheck) {
 		// TODO Auto-generated method stub
 		return calculateUnionAmount(payCheck) + calculateServiceCharges(payCheck);
